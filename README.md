@@ -15,14 +15,14 @@ All sensitive information such as credentials, hostnames, and client identifiers
 
 ## Repository Structure
 
-- "/document"  
+- **/document**  
   Final implementation document in PDF format, including step-by-step configuration and execution details.
 
-- "/screenshots"  
+- **/screenshots**  
   Screenshots from the original implementation showing task creation,configuration, execution, and validation.
 
-- "/scripts"  
-  Sanitized sample BTEQ script used as a pre-processing command.
+- **/scripts**  
+  Sanitised sample BTEQ script used as a pre-processing command.
 
 
 ## Related Article
