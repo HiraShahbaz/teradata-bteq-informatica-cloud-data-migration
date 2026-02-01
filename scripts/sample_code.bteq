@@ -1,0 +1,50 @@
+-- Sample BTEQ script
+
+.logmech ldap
+
+.LOGON ${TD_SERVER}/${TD_USER},${TD_PASS};
+
+   DATABASE ${TD_DB};
+   
+   
+   Drop Table ${TD_DB}.Product2_bkp;
+
+   CREATE MULTISET TABLE Product2_bkp ,FALLBACK ,
+     NO BEFORE JOURNAL,
+     NO AFTER JOURNAL,
+     CHECKSUM = DEFAULT,
+     DEFAULT MERGEBLOCKRATIO
+	 (
+      Id VARCHAR(255) CHARACTER SET UNICODE NOT CASESPECIFIC,
+      Name VARCHAR(255) CHARACTER SET UNICODE NOT CASESPECIFIC,
+      ....
+      ....
+      ....
+      ....
+     )
+UNIQUE PRIMARY INDEX ( Id );
+
+   .IF ERRORCODE <> 0 THEN .EXIT ERRORCODE;
+  
+   SELECT * FROM  
+  Product2_bkp
+   Sample 1; 
+   .IF ACTIVITYCOUNT <> 0 THEN .GOTO InsertProduct2_tbl ;  
+
+ 
+   .IF ERRORCODE <> 0 THEN .EXIT ERRORCODE; 
+ 
+   .LABEL InsertProduct2_tbl  
+   INSERT INTO Product2_bkp
+   SELECT * 
+   FROM  
+   Product2_tbl  ;  
+
+   .IF ERRORCODE <> 0 THEN .EXIT ERRORCODE; 
+   
+      Delete from  Product2_tbl ;
+  
+   
+.LOGOFF; 
+
+  
