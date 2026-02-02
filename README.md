@@ -27,7 +27,7 @@ All sensitive information such as credentials, hostnames, and client identifiers
 
 ## Related Article
 A detailed public article explaining this implementation:
-- Medium / Dev.to: 
+- Medium / Dev.to: https://dev.to/hira_12345/data-migration-between-servers-using-bteq-scripts-in-informatica-cloud-kdf
 
 
 ## Author
